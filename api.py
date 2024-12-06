@@ -1,4 +1,7 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, File, UploadFile
+from fastapi.responses import JSONResponse
+import numpy as np
+from keras.models import load_model
 
 app = FastAPI()
 
@@ -6,6 +9,7 @@ app = FastAPI()
 def read_root():
     return {"message": "Hello World"}
 
+model = load_model('dog_breed.h5')
 @app.post("/predict")
 async def predict(file: UploadFile = File(...)):
     """
