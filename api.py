@@ -11,7 +11,7 @@ def read_root():
 
 model = load_model('dog_breed.h5')
 @app.post("/predict")
-async def predict(file: UploadFile = File(...)):
+async def predict():
     """
     Endpoint pour prédire la race de chien.
     Accepte une image au format JPG.
